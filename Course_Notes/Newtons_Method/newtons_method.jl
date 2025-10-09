@@ -1,3 +1,5 @@
+using Printf
+
 # Define the function and its derivative
 f(x) = x^2 - 2      # An example: root of x^2 is √2
 df(x) = 2x          # Its derivative
@@ -21,4 +23,7 @@ function newton(f, df, x0; tol=1e-8, max_iter=100)
 end
 
 root = newton(f, df, 1.0)
-println!("Estimated root: ", root)
+@printf("Estimated root: %.8f\n", root)
+
+# For default f64 precision (16-digits):
+# println("Estimated root: ", root)
