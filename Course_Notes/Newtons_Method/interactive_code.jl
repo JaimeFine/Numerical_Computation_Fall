@@ -1,13 +1,19 @@
 # Note that this code is different than the newtons_method.jl
 # You can apply either, both are correct!
 println("Enter the function:")
-f = eval(Meta.parse("x -> $readline()"))
+user_input_f = readline()
+f = eval(Meta.parse("x -> $user_input_f"))
+
 println("Enter its derivative:")
-df = eval(Meta.parse("x -> $readline()"))
+user_input_df = readline()
+df = eval(Meta.parse("x -> $user_input_df"))
+
 println("Enter the initial value:")
 x0 = parse(Float64, readline())
+
 println("Enter your precision:")
 e = parse(Float64, readline())
+
 println("Enter the max iteration:")
 max_iter = parse(Int, readline())
 
@@ -15,7 +21,7 @@ function newton(f, df, x0, e, max_iter)
     flag = false
     count = 0
     x = x0
-    adj_e = (1 - abs(df(x0))) * e
+    x_new = x0
 
     while true
         fx = f(x)
@@ -28,7 +34,7 @@ function newton(f, df, x0, e, max_iter)
         x_new = x - fx / dfx
         count += 1
 
-        if abs(x_new - x) <= adj_e
+        if abs(x_new - x) <= e
             flag = true
             break
         elseif count <= max_iter
