@@ -5,7 +5,7 @@ f(x) = x^2 - 2      # An example: root of x^2 is √2
 df(x) = 2x          # Its derivative
 
 # Newton-Raphson method:
-function newton(f, df, x0; tol=1e-8, max_iter=100)
+function newton(f, df, x0; e=1e-8, max_iter=100)
     x = x0
     for i in 1:max_iter
         fx = f(x)
@@ -14,7 +14,7 @@ function newton(f, df, x0; tol=1e-8, max_iter=100)
             error("Derivative too small - possible division by zero.")
         end
         x_new = x - fx / dfx
-        if abs(x_new - x) < tol
+        if abs(x_new - x) < e
             return x_new
         end
         x = x_new
