@@ -1,6 +1,6 @@
 # Newton-Raphson Method:
 
-$$x_{\text{new}} = x - \frac{f(x)}{f'(x)}$$
+**$$x_{\text{new}} = x - \frac{f(x)}{f'(x)}$$**
 
 ## The algorithm:
 - Functionality: Find the root of the function f(x) = 0
