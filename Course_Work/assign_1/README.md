@@ -23,7 +23,7 @@ Write a program to implement Exercise 2.3. Determine the convergence of the solu
 
 ## Mathematic Deductions
 
-### Part 1: Equation \(x^3 - x^2 - x - 1 = 0\)
+### Part 1: Equation $\(x^3 - x^2 - x - 1 = 0\)$
 
 Let
 $f(x) = x^3 - x^2 - x - 1.$
@@ -59,7 +59,7 @@ $$
 
 ---
 
-### Part 2: Equation \(\cos x = \tfrac{1}{2} + \sin x\)
+### Part 2: Equation $\(\cos x = \tfrac{1}{2} + \sin x\)$
 
 Rewriting:
 $\sin x - \cos x + \tfrac{1}{2} = 0.$
