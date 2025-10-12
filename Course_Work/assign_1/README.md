@@ -1,6 +1,6 @@
 # Assignment 1
 
-### Exercise 2.3 — Newton's Method Applications
+## Exercise 2.3 — Newton's Method Applications
 
 Use Newton's method to find:
 
