@@ -1,3 +1,4 @@
+using Printf
 # Note that this code is different than the newtons_method.jl
 # You can apply either, both are correct!
 println("Enter the function:")
@@ -45,7 +46,10 @@ function newton(f, df, x0, e, max_iter)
     end
 
     if flag
-        println("The root is: ", x_new)
+        d = max(0, -floor(Int, log10(e)))
+        format = Printf.Format("The root is: %." * string(d) * "f\n")
+        result = Printf.format(format, x_new)
+        print(result)
     else
         println("Failed to converge within $max_iter iterations...")
     end
