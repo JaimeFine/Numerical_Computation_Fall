@@ -29,13 +29,12 @@ $$\mathbf{U} = \begin{bmatrix}
 Then we can get:
 
 $$
-\left\{
-\begin{array}{l}
+\begin{cases}
 \mathbf{L} = \begin{bmatrix} \ddots \end{bmatrix} \\
 \mathbf{D} = \begin{bmatrix} \ddots \end{bmatrix} \\
 \mathbf{U} = \begin{bmatrix} \ddots \end{bmatrix}
-\end{array}
-\right.
+\end{cases}
 $$
+
 
 
