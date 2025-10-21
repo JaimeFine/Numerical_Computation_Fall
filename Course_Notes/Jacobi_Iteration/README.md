@@ -30,11 +30,12 @@ Then we can get:
 
 $$
 \left\{
-\begin{array}{l}
-\mathbf{L} = \text{Lower triangular part of } \mathbf{A} \\
-\mathbf{D} = \text{Diagonal part of } \mathbf{A} \\
-\mathbf{U} = \text{Upper triangular part of } \mathbf{A}
-\end{array}
+\begin{aligned}
+\mathbf{L} &= \begin{bmatrix} \ddots \end{bmatrix} \\
+\mathbf{D} &= \begin{bmatrix} \ddots \end{bmatrix} \\
+\mathbf{U} &= \begin{bmatrix} \ddots \end{bmatrix}
+\end{aligned}
 \right.
 $$
+
 
