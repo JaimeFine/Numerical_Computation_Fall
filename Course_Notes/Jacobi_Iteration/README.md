@@ -30,11 +30,11 @@ Then we can get:
 
 $$
 \left\{
-\begin{aligned}
-\mathbf{L} &= \begin{bmatrix} \ddots \end{bmatrix} \\
-\mathbf{D} &= \begin{bmatrix} \ddots \end{bmatrix} \\
-\mathbf{U} &= \begin{bmatrix} \ddots \end{bmatrix}
-\end{aligned}
+\begin{array}{l}
+\mathbf{L} = \begin{bmatrix} \ddots \end{bmatrix} \\
+\mathbf{D} = \begin{bmatrix} \ddots \end{bmatrix} \\
+\mathbf{U} = \begin{bmatrix} \ddots \end{bmatrix}
+\end{array}
 \right.
 $$
 
