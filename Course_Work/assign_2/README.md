@@ -71,7 +71,7 @@ $$
 
 ### Decomposing Matrix $$\( \mathbf{A} \)$$
 
-We know that $$\( \mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U} \)$$, so that:
+We know that $$\mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U}$$, so that:
 
 
 $$
@@ -126,4 +126,4 @@ $$
 \mathbf{x}^{(k+1)} = (1 - \omega)\mathbf{x}^{(k)} + \omega (\mathbf{D} + \mathbf{L})^{-1} \left( \mathbf{b} - \mathbf{U} \mathbf{x}^{(k)} \right)
 $$
 
-where $$\( \omega \in (1.8, 1.22) \)$$ is the relaxation factor.
+where $$\omega \in (1.8, 1.22)$$ is the relaxation factor.
