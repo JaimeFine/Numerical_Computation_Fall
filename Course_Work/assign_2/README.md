@@ -39,32 +39,33 @@ Absolutely, Jaime! Let's walk through a clean mathematical deduction for solving
 
 We are given the system:
 
-$$
-\begin{bmatrix}
+$$\begin{bmatrix}
 4 & 3 & 0 \\
 3 & 4 & -1 \\
 0 & -1 & 4
-\end{bmatrix}
-\begin{bmatrix}
-x_1 \\
-x_2 \\
-x_3
-\end{bmatrix}
-=
-\begin{bmatrix}
-24 \\
-30 \\
--24
-\end{bmatrix}
-$$
+\end{bmatrix}\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} = \begin{bmatrix}
+24 \\ 30 \\ -24
+\end{bmatrix}$$
 
 Denoting:
 
 $$
-\( \mathbf{A} = \begin{bmatrix} 4 & 3 & 0 \\ 3 & 4 & -1 \\ 0 & -1 & 4 \end{bmatrix} \), \( \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \), \( \mathbf{b} = \begin{bmatrix} 24 \\ 30 \\ -24 \end{bmatrix} \)
+\mathbf{A} = \begin{bmatrix}
+4 & 3 & 0 \\
+3 & 4 & -1 \\
+0 & -1 & 4
+\end{bmatrix}, 
+\mathbf{x} = \begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix},
+\mathbf{b} = \begin{bmatrix}
+24 \\ 30 \\ -24
+\end{bmatrix}
 $$
 
-### Decomposing Matrix \( \mathbf{A} \)
+### Decomposing Matrix $$\( \mathbf{A} \)$$
 
 We know that $$\( \mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U} \)$$, so that:
 
