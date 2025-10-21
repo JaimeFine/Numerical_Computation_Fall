@@ -1,6 +1,6 @@
 # Jacobi Iteration Method:
 
-For equation set $$\mathbf{A}{x} = \mathbf{b}$$, we can decompose $$\mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U}$$
+For equation set $$\mathbf{Ax} = \mathbf{b}$$, we can decompose $$\mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U}$$
 
 $$\mathbf{L} = \begin{bmatrix}
 0 & 0 & 0 & \dots & 0 \\
@@ -30,9 +30,9 @@ Then we can get:
 
 $$
 \begin{cases}
-\mathbf{L} = \begin{bmatrix} \ddots \end{bmatrix} \\
-\mathbf{D} = \begin{bmatrix} \ddots \end{bmatrix} \\
-\mathbf{U} = \begin{bmatrix} \ddots \end{bmatrix}
+\mathbf{(L + D + U)x} = \mathbf{b} \\
+\mathbf{Dx} = -\mathbf{(L + U)x} + \mathbf{b}\\
+\mathbf{x} = -\mathbf{{D}^{-1}(L + U)x} + \mathbf{{D}^{-1}b}
 \end{cases}
 $$
 
