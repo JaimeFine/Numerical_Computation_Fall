@@ -5,9 +5,9 @@
 Use Jacobi method, Gauss-Seidel method, and SOR method to solve the following linear system:
 
 $$\begin{bmatrix}
-4 $ 3 $ 0 \\
-3 $ 4 $ -1 \\
-0 $ -1 $ 4
+4 & 3 & 0 \\
+3 & 4 & -1 \\
+0 & -1 & 4
 \end{bmatrix}\begin{bmatrix}
 x_1 \\ x_2 \\ x_3
 \end{bmatrix} = \begin{bmatrix}
@@ -39,7 +39,7 @@ Absolutely, Jaime! Let's walk through a clean mathematical deduction for solving
 
 We are given the system:
 
-\[
+$$
 \begin{bmatrix}
 4 & 3 & 0 \\
 3 & 4 & -1 \\
@@ -56,49 +56,50 @@ x_3
 30 \\
 -24
 \end{bmatrix}
-\]
+$$
 
 Denoting:
 
+$$
 \( \mathbf{A} = \begin{bmatrix} 4 & 3 & 0 \\ 3 & 4 & -1 \\ 0 & -1 & 4 \end{bmatrix} \), \( \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \), \( \mathbf{b} = \begin{bmatrix} 24 \\ 30 \\ -24 \end{bmatrix} \)
-
+$$
 
 ### Decomposing Matrix \( \mathbf{A} \)
 
-We know that \( \mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U} \), so that:
+We know that $$\( \mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U} \)$$, so that:
 
 
-\[
+$$
 \mathbf{D} = \begin{bmatrix}
 4 & 0 & 0 \\
 0 & 4 & 0 \\
 0 & 0 & 4
 \end{bmatrix}
-\]
+$$
 
-\[
+$$
 \mathbf{L} = \begin{bmatrix}
 0 & 0 & 0 \\
 3 & 0 & 0 \\
 0 & -1 & 0
 \end{bmatrix}
-\]
+$$
 
-\[
+$$
 \mathbf{U} = \begin{bmatrix}
 0 & 3 & 0 \\
 0 & 0 & -1 \\
 0 & 0 & 0
 \end{bmatrix}
-\]
+$$
 
 ### 1: Jacobi Iteration Formula
 
 The Jacobi iteration is:
 
-\[
+$$
 \mathbf{x}^{(k+1)} = \mathbf{D}^{-1} \left( \mathbf{b} - (\mathbf{L} + \mathbf{U}) \mathbf{x}^{(k)} \right)
-\]
+$$
 
 ---
 
@@ -106,9 +107,9 @@ The Jacobi iteration is:
 
 The Gauss-Seidel iteration is:
 
-\[
+$$
 \mathbf{x}^{(k+1)} = (\mathbf{D} + \mathbf{L})^{-1} \left( \mathbf{b} - \mathbf{U} \mathbf{x}^{(k)} \right)
-\]
+$$
 
 ---
 
@@ -116,8 +117,8 @@ The Gauss-Seidel iteration is:
 
 The SOR (Successive Over-Relaxation) iteration is:
 
-\[
+$$
 \mathbf{x}^{(k+1)} = (1 - \omega)\mathbf{x}^{(k)} + \omega (\mathbf{D} + \mathbf{L})^{-1} \left( \mathbf{b} - \mathbf{U} \mathbf{x}^{(k)} \right)
-\]
+$$
 
-where \( \omega \in (1.8, 1.22) \) is the relaxation factor.
+where $$\( \omega \in (1.8, 1.22) \)$$ is the relaxation factor.
