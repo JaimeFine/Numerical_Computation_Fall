@@ -1,7 +1,5 @@
 # Jacobi Iteration Method:
 
-$$x_{\text{new}} = x - \frac{f(x)}{f'(x)}$$
-
 For equation set $$\mathbf{A}{x} = \mathbf{b}$$, we can decompose $$\mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U}$$
 
 $$\mathbf{L} = \begin{bmatrix}
@@ -22,8 +20,20 @@ a_{11} &  &  &  &  \\
 
 $$\mathbf{U} = \begin{bmatrix}
 0 & a_{12} & a_{13} & \dots & a_{1n} \\
-0 & 0 & a_{32} & \dots & a_{2n} \\
+0 & 0 & a_{23} & \dots & a_{2n} \\
 0 & 0 & 0 & \dots & a_{3n} \\
 \vdots & \vdots & \vdots & & \vdots \\
 0 & 0 & 0 & \vdots & 0
 \end{bmatrix}$$
+
+Then we can get:
+
+$$
+\left\{
+\begin{aligned}
+\mathbf{L} &= \begin{bmatrix} \ddots \end{bmatrix} \\
+\mathbf{D} &= \begin{bmatrix} \ddots \end{bmatrix} \\
+\mathbf{U} &= \begin{bmatrix} \ddots \end{bmatrix}
+\end{aligned}
+\right.
+$$
