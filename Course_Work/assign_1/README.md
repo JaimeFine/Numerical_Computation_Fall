@@ -21,7 +21,7 @@ Write a program to implement Exercise 2.3. Determine the convergence of the solu
 
 ---
 
-## Mathematic Deductions
+## Mathematical Deductions
 
 ### Part 1: Equation $\(x^3 - x^2 - x - 1 = 0\)$
 
