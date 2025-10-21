@@ -85,11 +85,11 @@ We seek the **smallest positive root**. The student’s notes suggest searching 
 $[0,\tfrac{\pi}{4}].$
 
 On that interval
-$f'(x)=\sqrt{2}\,\cos\!\left(x - \tfrac{\pi}{4}\right)\neq 0.$
+$f'(x)=\sqrt{2}\,\cos\\left(x - \tfrac{\pi}{4}\right)\neq 0.$
 
 #### Newton's Iterative Formula
 
 $$
 x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}
-= x_k - \frac{\sqrt{2}\,\sin\!\left(x_k - \tfrac{\pi}{4}\right) + \tfrac{1}{2}}{\sqrt{2}\,\cos\!\left(x_k - \tfrac{\pi}{4}\right)}.
+= x_k - \frac{\sqrt{2}\,\sin\\left(x_k - \tfrac{\pi}{4}\right) + \tfrac{1}{2}}{\sqrt{2}\,\cos\!\left(x_k - \tfrac{\pi}{4}\right)}.
 $$
