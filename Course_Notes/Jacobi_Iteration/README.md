@@ -26,7 +26,7 @@ $$\mathbf{U} = \begin{bmatrix}
 0 & 0 & 0 & \vdots & 0
 \end{bmatrix}$$
 
-Then we can get:
+Then we will get:
 
 $$
 \begin{cases}
@@ -36,5 +36,6 @@ $$
 \end{cases}
 $$
 
+Therefore, the Jacobi iteration formula is:
 
-
+$$\mathbf{{x}^{k+1}} = -\mathbf{{D}^{-1}(L + U){x}^{k}} + \mathbf{{D}^{-1}b}$$
