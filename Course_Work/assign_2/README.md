@@ -31,10 +31,6 @@ x_1 \\ x_2 \\ x_3
 
 ---
 
-Absolutely, Jaime! Let's walk through a clean mathematical deduction for solving this system using **iterative methods** like Jacobi, Gauss-Seidel, and SOR. I’ll format it in Markdown with LaTeX so it’s GitHub-ready and easy to follow.
-
----
-
 ## Mathematical Deductions
 
 We are given the system:
