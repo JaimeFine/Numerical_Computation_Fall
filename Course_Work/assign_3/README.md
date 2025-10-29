@@ -1,11 +1,11 @@
 # Assignment 3
 
 
-Randomly generate a $$\mathbf{5000 \times 5000}$$ matrix $$\mathbf{A}$$ and a $$\mathbf{5000 \times 1}$$ vector $$\mathbf{x}$$, then compute $$\mathbf{b} = A\mathbf{x}$$, so that we can solve linear equations of the form $$\mathbf{b} = A\mathbf{x}$$ of any size.
+Randomly generate a $$\mathbf{5000 \times 5000}$$ matrix $$\mathbf{A}$$ and a $$\mathbf{5000 \times 1}$$ vector $$\mathbf{x}$$, then compute $$\mathbf{b} = A\mathbf{x}$$, so that we can solve linear equations of the form $$\mathbf{b =} A\mathbf{x}$$ of any size.
 
-- Solve the equation $$\mathbf{b} = A\mathbf{x}$$ using *library functions*.
+- Solve the equation $$\mathbf{b =} A\mathbf{x}$$ using *library functions*.
 - Perform *LU decomposition* on A, then solve for x.
-  Compute the norm $$\left\lVert \mathbf{b} = A\mathbf{x} \right\rVert$$ to verify the correctness of the solution.
+  Compute the norm $$\left\lVert \mathbf{b =} A\mathbf{x} \right\rVert$$ to verify the correctness of the solution.
 - Compare the *computation time* between the two methods and analyze the results.
 - Then solve the following system:
 
@@ -31,4 +31,4 @@ $$
 
 Find the corresponding solution x.
 
-**Remember to verify the correctness of the solution by computing the residual norm!**
+> **Remember to verify the correctness of the solution by computing the residual norm!**
