@@ -1,3 +1,6 @@
+using Printf
+using BenchmarkTools
+
 f(x) = cos(x) + 1.0 / (1.0 + exp(-2.0 * x))
 df(x) = -sin(x) + 2.0 * exp(-2.0 * x) / (1.0 + exp(-2.0 * x))^2
 
@@ -7,8 +10,9 @@ function iteration_1(x0; max_iter=100, tol=1e-8)
         x_new = acos(-1.0 / (1.0 + exp(-2 * x)))
 
         if abs(x_new - x) < tol
-            println(
-                "The minimum positive root of the first scheme is: $x_new"
+            @printf(
+                "The minimum positive root of the first scheme is: %.5f",
+                x_new
             )
             return x_new
         end
@@ -23,15 +27,16 @@ function iteration_2(x0; max_iter=100, tol=1e-8)
     for i in 1:max_iter
         arg = -1.0 / (1.0 + 1.0 / cos(x))
         if arg <= 0.0
-            println("Error! Log of non-positive number at x = $x.")
+            @printf("Error! Log of non-positive number at x = %.5f.", x)
             return nothing
         end
-        
+
         x_new = 0.5 * log(arg)
 
         if abs(x_new - x) < tol
             println(
-                "The minimum positive root of the second scheme is: $x_new"
+                "The minimum positive root of the second scheme is: %.5f",
+                x_new
             )
             return x_new
         end
@@ -53,8 +58,9 @@ function newton(f, df, x0; max_iter=100, tol=1e-8)
         x_new = x - fx / dfx
 
         if abs(x_new - x) < tol
-            println(
-                "The minimum positive root of the newton's method is: $x_new"
+            @printf(
+                "The minimum positive root of the newton's method is: %.5f",
+                x_new
             )
             return x_new
         end
@@ -64,8 +70,8 @@ function newton(f, df, x0; max_iter=100, tol=1e-8)
     return x_new
 end
 
-iteration_1(3)
+@time iteration_1(3.0)
 println("-----------------------------------")
 iteration_2(3)
-println("-----------------------------------")
-newton(f, df, 3)
+println("\n-----------------------------------")
+@time newton(f, df, 3.0)
