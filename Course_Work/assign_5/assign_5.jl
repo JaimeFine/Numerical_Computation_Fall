@@ -79,3 +79,15 @@ plot!(
     x_lagrange, y_lagrange, label="LaGrange", lw=2, 
     color=:blue, ls=:dashdot
 )
+
+# Cubic Spline Interpolation:
+cubic_spline = CubicSpline(
+    y_vals, x_vals; extrapolation = ExtrapolationType.Linear
+)
+
+x_cspline = -1.5:0.01:3.5
+y_cspline = lagrange.(x_lagrange)
+plot!(
+    x_cspline, y_cspline, label="Cubic-Spline", lw=2,
+    color=:cyan, ls=:dot
+)
