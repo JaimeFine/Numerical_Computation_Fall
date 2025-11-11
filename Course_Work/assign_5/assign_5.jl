@@ -1,4 +1,6 @@
 using Plots
+using HermiteInterpolation
+using DataInterpolations
 
 function divided_differences(x, y)
     n = length(x)
@@ -56,3 +58,13 @@ plot(xs, ys_old, label="Newton (4 points)", lw=2)
 plot!(xs, ys_new, label="Newton (5 points)", lw=2, ls=:dash)
 scatter!(x_vals, y_vals, label="Original Data", color=:black)
 scatter!([3.1], [0.1], label="Added Point", color=:red)
+
+# Other methods:
+# Hermite Interpolation:
+derivative_set = [3.0, 0.5, 3.0, -1.0]
+hermite = HermiteInterpolation.fit(x_vals, y_vals, derivative_set)
+x_hermite = -1.5:0.01:3.5
+y_hermite = hermite.(x_hermite)
+plot!(x_hermite, y_hermite, label="Hermite", lw=2, color=:green)
+
+# LaGrange Interpolation:
