@@ -1,5 +1,4 @@
 using Plots
-using HermiteInterpolation
 
 function divided_differences(x, y)
     n = length(x)
