@@ -54,12 +54,13 @@ xs = -1.5:0.01:3.5
 ys_old = [f_interp(x) for x in xs]
 ys_new = [f_interp_new(x) for x in xs]
 
-plot(xs, ys_old, label="Newton (4 points)", lw=2)
+plot(xs, ys_old, label="Newton (4 points)", lw=2, color=:red)
 plot!(xs, ys_new, label="Newton (5 points)", lw=2, ls=:dash)
 scatter!(x_vals, y_vals, label="Original Data", color=:black)
 scatter!([3.1], [0.1], label="Added Point", color=:red)
 
 # Other methods:
+
 # Hermite Interpolation:
 derivative_set = [3.0, 0.5, 3.0, -1.0]
 hermite = HermiteInterpolation.fit(x_vals, y_vals, derivative_set)
@@ -68,3 +69,13 @@ y_hermite = hermite.(x_hermite)
 plot!(x_hermite, y_hermite, label="Hermite", lw=2, color=:green)
 
 # LaGrange Interpolation:
+lagrange = LagrangeInterpolation(
+    y_vals, x_vals; extrapolation = ExtrapolationType.Linear
+)
+
+x_lagrange = -1.5:0.01:3.5
+y_lagrange = lagrange.(x_lagrange)
+plot!(
+    x_lagrange, y_lagrange, label="LaGrange", lw=2, 
+    color=:blue, ls=:dashdot
+)
