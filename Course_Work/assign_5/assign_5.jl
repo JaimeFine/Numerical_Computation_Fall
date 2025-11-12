@@ -2,6 +2,7 @@ using Plots
 using HermiteInterpolation
 using DataInterpolations
 
+# Task 1
 function divided_differences(x, y)
     n = length(x)
     a = copy(y)
@@ -54,10 +55,10 @@ xs = -1.5:0.01:3.5
 ys_old = [f_interp(x) for x in xs]
 ys_new = [f_interp_new(x) for x in xs]
 
-plot(xs, ys_old, label="Newton (4 points)", lw=2, color=:red)
-plot!(xs, ys_new, label="Newton (5 points)", lw=2, ls=:dash)
-scatter!(x_vals, y_vals, label="Original Data", color=:black)
-scatter!([3.1], [0.1], label="Added Point", color=:red)
+p1 = plot(xs, ys_old, label="Newton (4 points)", lw=2, color=:red)
+plot!(p1, xs, ys_new, label="Newton (5 points)", lw=2, ls=:dash)
+scatter!(p1, x_vals, y_vals, label="Original Data", color=:black)
+scatter!(p1, [3.1], [0.1], label="Added Point", color=:red)
 
 # Other methods:
 
@@ -66,7 +67,7 @@ derivative_set = [3.0, 0.5, 3.0, -1.0]
 hermite = HermiteInterpolation.fit(x_vals, y_vals, derivative_set)
 x_hermite = -1.5:0.01:3.5
 y_hermite = hermite.(x_hermite)
-plot!(x_hermite, y_hermite, label="Hermite", lw=2, color=:green)
+plot!(p1, x_hermite, y_hermite, label="Hermite", lw=2, color=:green)
 
 # LaGrange Interpolation:
 lagrange = LagrangeInterpolation(
@@ -75,9 +76,9 @@ lagrange = LagrangeInterpolation(
 
 x_lagrange = -1.5:0.01:3.5
 y_lagrange = lagrange.(x_lagrange)
-plot!(
-    x_lagrange, y_lagrange, label="LaGrange", lw=2, 
-    color=:blue, ls=:dashdot
+p2 = plot(
+    x_lagrange, y_lagrange, label="LaGrange",
+    lw=2, color=:blue, ls=:dashdot
 )
 
 # Cubic Spline Interpolation:
@@ -88,6 +89,20 @@ cubic_spline = CubicSpline(
 x_cspline = -1.5:0.01:3.5
 y_cspline = lagrange.(x_lagrange)
 plot!(
-    x_cspline, y_cspline, label="Cubic-Spline", lw=2,
-    color=:cyan, ls=:dot
+    p2, x_cspline, y_cspline, label="Cubic-Spline",
+    lw=2, color=:cyan, ls=:dot
 )
+
+# Task 2
+x_2 = [-5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0]
+y_2 = [1/26, 1/17, 1/10, 1/5, 1/2, 1.0, 1/2, 1/5, 1/10, 1/17]
+
+a_2 = divided_differences(x_2, y_2)
+f_interp_2 = x -> newton_evaluate(x_2, a_2, x)
+xs_2 = -5.5:0.01:4.5
+ys_2 = [f_interp_2(x) for x in xs_2]
+
+p3 = plot(xs_2, ys_2, label="Newton Task 2", lw=2, color=:red)
+scatter!(p3, x_2, y_2, label="Original Data", color=:black)
+
+plot(p1, p2, layout=(2,1))
