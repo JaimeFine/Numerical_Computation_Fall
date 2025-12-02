@@ -260,5 +260,5 @@ r, θ = rodrigues_from_R(R)
 # Panning: x, y, z = -15.174821832828904   9.590334711153755  21.176335086376653
 
 rot = r * 180 / pi
-println("Rodriguez's vecotr r: ", rot)
+println("Rodriguez's vector r: ", rot)
 println("Translation t: ", vec(t))
