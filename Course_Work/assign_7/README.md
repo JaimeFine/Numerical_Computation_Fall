@@ -25,18 +25,14 @@ $$
 0 & \cos\alpha & \sin\alpha \\
 0 & -\sin\alpha & \cos\alpha
 \end{bmatrix}
-\
-
-\[1em]
+\\[1em]
 \mathbf{R}_{y} =
 \begin{bmatrix}
 \cos\beta & 0 & -\sin\beta \\
 0 & 1 & 0 \\
 \sin\beta & 0 & \cos\beta
 \end{bmatrix}
-\
-
-\[1em]
+\\[1em]
 \mathbf{R}_{z} =
 \begin{bmatrix}
 \cos\gamma & \sin\gamma & 0 \\
