@@ -17,7 +17,6 @@ The parameters to be solved consist of three rotation parameters and three trans
 ### Rotation matrices
 
 $$
-\left\{
 \begin{array}{l}
 \mathbf{R}_{x} =
 \begin{bmatrix}
@@ -40,33 +39,13 @@ $$
 0 & 0 & 1
 \end{bmatrix}
 \end{array}
-\right.
 $$
 
 ---
 
-\[
-\left\{
-\begin{array}{l}
-\text{First line of text} \
+### Two point clouds, each consisting of 100 points, correspond to each other point-wise but differ by a rotation. Their coordinates are as follows:
 
-\[6pt]
-\text{Second line of text} \
-
-\[6pt]
-\text{Third line of text}
-\end{array}
-\right.
-\]
-
-
-
-
----
-
-## Two point clouds, each consisting of 100 points, correspond to each other point-wise but differ by a rotation. Their coordinates are as follows:
-
-### Original positions X:
+#### Original positions X:
 
 -25.7327472034808	-1.59577262045885	5.87232723842266	1
 -23.2634097372438	14.3253879566629	4.97988392890139	1
@@ -169,7 +148,7 @@ $$
 57.0353909029624	141.796242940532	-1.56462405976441	1
 55.9615385324441	159.914739395375	-0.260541772882494	1
 
-### After rotation and translation:
+#### After rotation and translation:
 -34.3675782264961	8.56087762300337	3.01639796626039	1
 -36.5672852588963	23.0799475985791	9.70484567266506	1
 -44.4039012767356	40.1931331123634	14.5866221835492	1
