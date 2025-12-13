@@ -20,6 +20,7 @@ function jacobi(A::Matrix{Float64}, b::Vector{Float64}; x0=zeros(size(b)), tol=1
     return x
 end
 
+# An example usage:
 A = [10.0 -1.0 2.0 0.0;
      -1.0 11.0 -1.0 3.0;
      2.0 -1.0 10.0 -1.0;

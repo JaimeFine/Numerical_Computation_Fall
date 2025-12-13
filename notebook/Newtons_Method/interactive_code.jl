@@ -10,7 +10,7 @@ user_input_df = readline()
 df = eval(Meta.parse("x -> $user_input_df"))
 
 println("Enter the initial value:")
-x0 = parse(Float64, readline())
+x0 = eval(Meta.parse(readline()))
 
 println("Enter your precision:")
 e = parse(Float64, readline())
