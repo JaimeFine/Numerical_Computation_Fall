@@ -10,7 +10,46 @@ md"""
 
 This is a notebook about root-finding algorithms in numerical computation!
 
-## The Example
+## Roadmap of Root-Finding Methods
+
+### Methods Covered
+
+- **Bisection Method**  
+
+- **Fixed Point Iteration**  
+
+- **Relaxation Method**  
+
+- **Aitken Acceleration (Steffensen’s Method)**  
+
+- **Newton–Raphson Method**  
+
+- **Simplified Newton Method**  
+
+- **Secant Method**  
+
+- **Damped Newton Method**  
+
+---
+
+### Comparison at a Glance
+
+| Method                  | Needs Derivative | Needs Interval | Convergence | Robustness |
+|--------------------------|------------------|----------------|-------------|------------|
+| Bisection               | No               | Yes            | Linear      | Very high  |
+| Fixed Point             | No               | No             | Linear      | Moderate   |
+| Relaxation              | No               | No             | Linear      | Adjustable |
+| Steffensen (Aitken)     | No               | No             | Quadratic   | Moderate   |
+| Newton–Raphson          | Yes              | No             | Quadratic   | Sensitive  |
+| Simplified Newton       | Yes (once)       | No             | Linear      | Moderate   |
+| Secant                  | No               | Two guesses    | Superlinear | Moderate   |
+| Damped Newton           | Yes              | No             | Quadratic   | Safer      |
+
+This roadmap helps you navigate the trade‑offs: robustness vs speed, derivative vs derivative‑free, bracketing vs open methods.
+
+-----
+
+## Example
 
 An example with function $x^{3}-x-1=0$
 
