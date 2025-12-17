@@ -140,6 +140,84 @@ begin
 	sor(A, b, ω)
 end
 
+# ╔═╡ 85485111-3749-4459-9b8b-d6b3186435e5
+md"""
+### Gaussian Elimination Method
+"""
+
+# ╔═╡ 16e9814d-42df-4fa8-8b44-e81565e3d335
+begin
+	function gaussian_elimination(
+		A::Matrix{Float64}, b::Vector{Float64}
+	)
+		n = size(A, 1)
+		Ab = hcat(A, b)		# Now we get the augmented matrix
+
+		for i in 1:n-1
+			for j in i+1:n
+				factor = Ab[j, i] / Ab[i, i]
+				Ab[j, i:end] .-= factor .* Ab[i, i:end]
+			end
+		end
+
+		x = zeros(Float64, n)
+		for i in n:-1:1
+			# This part: dot(Ab[i, i+1:n], x[i+1:n]),
+			# computes the sum directly!
+			x[i] = (Ab[i, end] - dot(Ab[i, i+1:n], x[i+1:n])) / Ab[i, i]
+		end
+
+		println("Approximation: ", x)
+		
+		return x
+	end
+
+	gaussian_elimination(A, b)
+end
+
+# ╔═╡ 7aea5bfd-3757-48fe-adc7-4860e3bc68a8
+md"""
+### Partial Pivoting Gauss Elimination
+"""
+
+# ╔═╡ beddc0f4-18c0-4b22-aad8-d173023dc259
+begin
+	function partial_pivoting_ge(
+		A::Matrix{Float64}, b::Vector{Float64}
+	)
+		n = size(A, 1)
+		Ab = hcat(A, b)
+		
+		for i in 1:n-1
+			pivot_row = argmax(abs.(Ab[i:end, i])) + i - 1
+			if pivot_row != i
+				Ab[i, :], Ab[pivot_row, :] = Ab[pivot_row, :], Ab[i, :]
+			end
+
+			for j in i+1:n
+				factor = Ab[j, i] / Ab[i, i]
+				Ab[j, i:end] .-= factor .* Ab[i, i:end]
+			end
+		end
+
+		x = zeros(Float64, n)
+		for i in n:-1:1
+			x[i] = (Ab[i, end] - dot(Ab[i, i+1:n], x[i+1:n])) / Ab[i, i]
+		end
+
+		println("Approximation: ", x)
+		
+		return x
+	end
+
+	partial_pivoting_ge(A, b)
+end
+
+# ╔═╡ cb4087f2-5021-4f48-b244-1475303bfd2d
+md"""
+### LU Decomposition
+"""
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -184,11 +262,16 @@ version = "5.15.0+0"
 """
 
 # ╔═╡ Cell order:
-# ╠═6ca1508e-d9b3-11f0-85e3-a9cca3c67ff7
+# ╟─6ca1508e-d9b3-11f0-85e3-a9cca3c67ff7
 # ╠═61958f32-a8b6-40d6-be2e-858574ab7708
 # ╟─f880da5a-0dd1-4592-bf18-3d830441abd4
 # ╠═41c19325-2ac9-42f7-862e-37abd505bfc8
 # ╟─ce647298-2958-48fa-9361-3f48955a098f
 # ╠═317227db-1cf5-4329-8441-9ad00a9b1013
+# ╟─85485111-3749-4459-9b8b-d6b3186435e5
+# ╠═16e9814d-42df-4fa8-8b44-e81565e3d335
+# ╟─7aea5bfd-3757-48fe-adc7-4860e3bc68a8
+# ╠═beddc0f4-18c0-4b22-aad8-d173023dc259
+# ╟─cb4087f2-5021-4f48-b244-1475303bfd2d
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
