@@ -215,7 +215,7 @@ end
 
 # ╔═╡ cb4087f2-5021-4f48-b244-1475303bfd2d
 md"""
-### Doolittle's LU Decomposition
+### LU Decomposition
 """
 
 # ╔═╡ 2e7b26e0-c6be-46f0-bcd2-2cd092620217
@@ -224,6 +224,7 @@ begin
 		A::Matrix{Float64}, b::Vector{Float64}
 	)
 		n = size(A, 1)
+		# Declaring the Doolittle's LU Decomposition matrices:
 		U = zeros(Float64, n, n)
 		L = zeros(Float64, n, n)
 
@@ -263,15 +264,16 @@ end
 
 # ╔═╡ 09cf821b-991e-4e5c-823b-726a25414d9c
 md"""
-### Cholesky's LU Decomposition
+### Square Root Method
 """
 
 # ╔═╡ f97c4dab-dba6-4038-bd18-64c959a2a8e2
 begin
-	function cholesky(
+	function sq_root(
 		A::Matrix{Float64}, b::Vector{Float64}
 	)
 		n = size(A, 1)
+		# Declaring the Cholesky's Decomposition matrix:
 		L = zeros(Float64, n, n)
 
 		for i in 1:n
@@ -301,8 +303,16 @@ begin
 	     2.0 10.0 5.0;
 	     2.0 5.0 9.0]
 	
-	cholesky(B, b)
+	sq_root(B, b)
 end
+
+# ╔═╡ 05ab7b96-f475-48b4-8bec-5a47010bd935
+md"""
+### Improved Square Root Method
+"""
+
+# ╔═╡ 00d80502-d7af-4382-85e5-065e695b7eb4
+
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -358,9 +368,11 @@ version = "5.15.0+0"
 # ╠═16e9814d-42df-4fa8-8b44-e81565e3d335
 # ╟─7aea5bfd-3757-48fe-adc7-4860e3bc68a8
 # ╠═beddc0f4-18c0-4b22-aad8-d173023dc259
-# ╟─cb4087f2-5021-4f48-b244-1475303bfd2d
+# ╠═cb4087f2-5021-4f48-b244-1475303bfd2d
 # ╠═2e7b26e0-c6be-46f0-bcd2-2cd092620217
-# ╟─09cf821b-991e-4e5c-823b-726a25414d9c
+# ╠═09cf821b-991e-4e5c-823b-726a25414d9c
 # ╠═f97c4dab-dba6-4038-bd18-64c959a2a8e2
+# ╠═05ab7b96-f475-48b4-8bec-5a47010bd935
+# ╠═00d80502-d7af-4382-85e5-065e695b7eb4
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
