@@ -215,7 +215,7 @@ end
 
 # ╔═╡ cb4087f2-5021-4f48-b244-1475303bfd2d
 md"""
-### LU Decomposition
+### LU Decomposition Method
 """
 
 # ╔═╡ 2e7b26e0-c6be-46f0-bcd2-2cd092620217
@@ -254,7 +254,7 @@ begin
 			x[i] = (y[i] - dot(U[i, i+1:n], x[i+1:n])) / U[i, i]
 		end
 
-		println(x)
+		println("Solution: "x)
 		
 		return nothing
 	end
@@ -293,10 +293,10 @@ begin
 
 		x = zeros(Float64, n)
 		for i in n:-1:1
-		    x[i] = (y[i] - dot(L[1:i-1,i], x[1:i-1])) / L[i,i]
+		    x[i] = (y[i] - dot(L[i+1:n, i], x[i+1:n])) / L[i,i]
 		end
 
-		println(x)
+		println("Solution: ", x)
 	end
 
 	B = [4.0 2.0 2.0;
@@ -312,6 +312,57 @@ md"""
 """
 
 # ╔═╡ 00d80502-d7af-4382-85e5-065e695b7eb4
+begin
+	function improved_sq(
+		A::Matrix{Float64}, b::Vector{Float64}
+	)
+		n = size(A, 1)
+		L = Matrix{Float64}(I, n, n)
+		D = zeros(Float64, n)
+
+		for i in 1:n
+			sum_square = 0.0
+			for k in 1:i-1
+				sum_square += (L[i, k] ^ 2) * D[k]
+			end
+			D[i] = A[i, i] - sum_square
+
+			for j in i+1:n
+				sum_ele = 0.0
+				for k in 1:i-1
+					sum_ele += L[i, k] * L[j, k] * D[k]
+				end
+				L[j, i] = (A[j, i] - sum_ele) / D[i]
+			end
+		end
+		
+		y = zeros(Float64, n)
+		for i in 1:n
+			y[i] = b[i] - dot(L[i, 1:i-1], y[1:i-1])
+		end
+
+		z = zeros(Float64, n)
+		for i in 1:n
+			z[i] = y[i] / D[i]
+		end
+
+		x = zeros(Float64, n)
+		for i in n:-1:1
+			x[i] = (z[i] - dot(L[i+1:n, i], x[i+1:n])) / L[i, i]
+		end
+
+		println("Solution: ", x)
+	end
+	
+	improved_sq(B, b)
+end
+
+# ╔═╡ ff12925c-8bc5-499d-bb2a-ec12713fabd0
+md"""
+### Chasing Method (Thomas Algorithm)
+"""
+
+# ╔═╡ 6f04dae6-a74a-448d-8fb8-32f612c094e1
 
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -368,11 +419,13 @@ version = "5.15.0+0"
 # ╠═16e9814d-42df-4fa8-8b44-e81565e3d335
 # ╟─7aea5bfd-3757-48fe-adc7-4860e3bc68a8
 # ╠═beddc0f4-18c0-4b22-aad8-d173023dc259
-# ╠═cb4087f2-5021-4f48-b244-1475303bfd2d
+# ╟─cb4087f2-5021-4f48-b244-1475303bfd2d
 # ╠═2e7b26e0-c6be-46f0-bcd2-2cd092620217
-# ╠═09cf821b-991e-4e5c-823b-726a25414d9c
+# ╟─09cf821b-991e-4e5c-823b-726a25414d9c
 # ╠═f97c4dab-dba6-4038-bd18-64c959a2a8e2
-# ╠═05ab7b96-f475-48b4-8bec-5a47010bd935
+# ╟─05ab7b96-f475-48b4-8bec-5a47010bd935
 # ╠═00d80502-d7af-4382-85e5-065e695b7eb4
+# ╟─ff12925c-8bc5-499d-bb2a-ec12713fabd0
+# ╠═6f04dae6-a74a-448d-8fb8-32f612c094e1
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
