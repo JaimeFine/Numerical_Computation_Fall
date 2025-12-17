@@ -215,8 +215,94 @@ end
 
 # ╔═╡ cb4087f2-5021-4f48-b244-1475303bfd2d
 md"""
-### LU Decomposition
+### Doolittle's LU Decomposition
 """
+
+# ╔═╡ 2e7b26e0-c6be-46f0-bcd2-2cd092620217
+begin
+	function LU_decomposition(
+		A::Matrix{Float64}, b::Vector{Float64}
+	)
+		n = size(A, 1)
+		U = zeros(Float64, n, n)
+		L = zeros(Float64, n, n)
+
+		for r in 1:n
+			L[r, r] = 1.0
+		end
+			
+		U[1, :] = A[1, :]
+		L[2:end, 1] = A[2:end, 1] ./ U[1, 1]
+
+		for r in 2:n
+			for j in r:n
+				U[r, j] = A[r, j] - dot(L[r, 1:r-1], U[1:r-1, j])
+			end
+			for i in r+1:n
+				L[i, r] = (A[i, r] - dot(L[i, 1:r-1], U[1:r-1, r])) / U[r, r]
+			end
+		end
+
+		y = zeros(Float64, n)
+		for i in 1:n
+		    y[i] = (b[i] - dot(L[i, 1:i-1], y[1:i-1])) / L[i,i]
+		end
+
+		x = zeros(Float64, n)
+		for i in n:-1:1
+			x[i] = (y[i] - dot(U[i, i+1:n], x[i+1:n])) / U[i, i]
+		end
+
+		println(x)
+		
+		return nothing
+	end
+
+	LU_decomposition(A, b)
+end
+
+# ╔═╡ 09cf821b-991e-4e5c-823b-726a25414d9c
+md"""
+### Cholesky's LU Decomposition
+"""
+
+# ╔═╡ f97c4dab-dba6-4038-bd18-64c959a2a8e2
+begin
+	function cholesky(
+		A::Matrix{Float64}, b::Vector{Float64}
+	)
+		n = size(A, 1)
+		L = zeros(Float64, n, n)
+
+		for i in 1:n
+			sum_square = sum(L[i, 1:i-1] .^ 2)
+			L[i, i] = sqrt(A[i, i] - sum_square)
+
+			for j in i+1:n
+				sum_ele = sum(L[i, 1:i-1] .* L[j, 1:i-1])
+				L[j, i] = (A[i, j] - sum_ele) / L[i, i]
+			end
+		end
+
+		y = zeros(Float64, n)
+		for i in 1:n
+		    y[i] = (b[i] - dot(L[i,1:i-1], y[1:i-1])) / L[i,i]
+		end
+
+		x = zeros(Float64, n)
+		for i in n:-1:1
+		    x[i] = (y[i] - dot(L[1:i-1,i], x[1:i-1])) / L[i,i]
+		end
+
+		println(x)
+	end
+
+	B = [4.0 2.0 2.0;
+	     2.0 10.0 5.0;
+	     2.0 5.0 9.0]
+	
+	cholesky(B, b)
+end
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -273,5 +359,8 @@ version = "5.15.0+0"
 # ╟─7aea5bfd-3757-48fe-adc7-4860e3bc68a8
 # ╠═beddc0f4-18c0-4b22-aad8-d173023dc259
 # ╟─cb4087f2-5021-4f48-b244-1475303bfd2d
+# ╠═2e7b26e0-c6be-46f0-bcd2-2cd092620217
+# ╟─09cf821b-991e-4e5c-823b-726a25414d9c
+# ╠═f97c4dab-dba6-4038-bd18-64c959a2a8e2
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
