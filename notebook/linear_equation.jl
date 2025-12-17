@@ -359,11 +359,46 @@ end
 
 # ╔═╡ ff12925c-8bc5-499d-bb2a-ec12713fabd0
 md"""
-### Chasing Method (Thomas Algorithm)
+### Chasing Method (Thomas Algorithm)$^{*}$
 """
 
 # ╔═╡ 6f04dae6-a74a-448d-8fb8-32f612c094e1
+begin
+	function chasing_method(
+		l::Vector{Float64}, d::Vector{Float64},
+		u::Vector{Float64}, b::Vector{Float64}
+	)
+		n = length(d)
 
+		for i in 2:n
+			w = l[i-1] / d[i-1]
+			d[i] -= w * u[i-1]
+			b[i] -= w * b[i-1]
+		end
+
+		x = zeros(Float64, n)
+		x[n] = b[n] / d[n]
+		for i in n-1:-1:1
+			x[i] = (b[i] - u[i] * x[i+1]) / d[i]
+		end
+
+		println("Solution: ", x)
+		
+		return x
+	end
+
+	# Example system:
+	# A = [2 1 0 0;
+	#      1 2 1 0;
+	#      0 1 2 1;
+	#      0 0 1 2]
+	l = [1.0, 1.0, 1.0]             # subdiagonal
+	d = [2.0, 2.0, 2.0, 2.0]        # main diagonal
+	u = [1.0, 1.0, 1.0]             # superdiagonal
+	c = [5.0, 6.0, 6.0, 5.0]        # RHS
+
+	chasing_method(l, d, u, c)
+end
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
