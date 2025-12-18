@@ -52,6 +52,38 @@ md"""
 
 This is a notebook about numerical linear algebra algorithms in numerical computation!
 
+## Roadmap of Linear Equation Solvers
+
+### Methods Covered
+
+- **Jacobi Method**  
+- **Gauss–Seidel Method**  
+- **Successive Over Relaxation (SOR)**  
+- **Gaussian Elimination**  
+- **Partial Pivoting Gaussian Elimination**  
+- **LU Decomposition (Doolittle)**  
+- **Square Root Method (Cholesky)**  
+- **Improved Square Root Method (LDLᵀ)**  
+- **Chasing Method (Thomas Algorithm)**  
+
+---
+
+### Comparison at a Glance
+
+| Method                          | Type       | Iterative/Direct | Convergence/Complexity | Robustness |
+|---------------------------------|------------|------------------|------------------------|------------|
+| Jacobi                          | Iterative  | Iterative        | Linear (needs diagonal dominance) | Moderate   |
+| Gauss–Seidel                    | Iterative  | Iterative        | Linear, faster than Jacobi | Moderate   |
+| Successive Over Relaxation (SOR)| Iterative  | Iterative        | Adjustable, can be superlinear with optimal ω | Sensitive to ω |
+| Gaussian Elimination            | General    | Direct           | $O(n^3)$             | Moderate (pivoting improves) |
+| Partial Pivoting GE             | General    | Direct           | $O(n^3)$             | High (avoids zero pivots) |
+| LU Decomposition (Doolittle)    | General    | Direct           | $O(n^3)$ (factorization + substitution) | High, reusable for multiple b |
+| Square Root (Cholesky)          | SPD only   | Direct           | $O(n^3)$             | High (requires SPD matrix) |
+| Improved Square Root (LDLᵀ)     | SPD only   | Direct           | $O(n^3)$, avoids square roots | High (numerically stable) |
+| Chasing Method (Thomas Alg.)    | Tridiagonal| Direct           | $O(n)$               | Very high (specialized, efficient) |
+
+-----
+
 ## Example
 
 An example with function
