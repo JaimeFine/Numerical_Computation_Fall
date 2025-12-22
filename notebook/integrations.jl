@@ -12,12 +12,16 @@ This is a notebook about integration algorithm in numerical computation!
 
 ## Example
 
+An example with:
+
+$\int_a^b f(x)dx$
 
 ### Trapezoidal Rule (Newton-Cotes, degree 1)
 """
 
 # ╔═╡ 1367f244-51b8-4070-be00-5e7cf5269d68
 begin
+	# This is a composite trapezoidal rule's function:
 	function trapezoid(f, a, b, n)
 		h = (b - a) / n
 		total = 0.0
@@ -45,6 +49,7 @@ md"""
 
 # ╔═╡ 51de4a86-f46e-4c9e-91cd-09e99ae03e39
 begin
+	# This is a composite simpson's rule's function:
 	function simpson(f, a, b, n)
 		# Not that n must be even!
 		h = (b - a) / n
