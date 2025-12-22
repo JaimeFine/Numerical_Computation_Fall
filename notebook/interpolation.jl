@@ -117,6 +117,105 @@ begin
 	)
 end
 
+# ╔═╡ 736a9385-aeeb-454d-9ebf-8aea5f9f94a1
+md"""
+### Hermite Interpolation
+"""
+
+# ╔═╡ 1f25a63d-bad2-4a14-b519-dd6945659aa1
+begin
+	function hermite(x, y)
+		n = length(x)
+		z = repeat(x, inner=2)
+		Q = zeros(2n, 2n)
+		Q[:, 1] = repeat(y, inner=2)
+
+		# Compute derivative first of all:
+		dy = zeros(n)		
+		for i in 2:n-1 
+			dy[i] = (y[i+1] - y[i-1]) / (x[i+1] - x[i-1])
+		end
+		dy[1] = (y[2] - y[1]) / (x[2] - x[1])
+		dy[n] = (y[n] - y[n-1]) / (x[n] - x[n-1])
+		
+		for i in 1:n
+			Q[2i-1, 2] = dy[i]
+			Q[2i, 2] = dy[i]
+		end
+
+		for j in 3:2n
+			for i in j:2n
+				Q[i, j] = (Q[i, j-1] - Q[i-1, j-1]) / (z[i] - z[i-j+1])
+			end
+		end
+
+		# Another method apart from return t-> ...
+		function H(t)
+			result = Q[2n, 2n]
+			for i in (2n-1):-1:1
+				result = result * (t - z[i]) + Q[i, i]
+			end
+			return result
+		end
+
+		return H
+	end
+	
+	hermite_value = hermite(x, y)
+	println("f(1.5) = ", hermite_value(1.5))
+
+	x_hermite = -1.5:0.01:3.5
+	y_hermite = hermite_value.(x_hermite)
+	p3 = plot(
+		x_hermite, y_hermite, label="Hermite",
+		lw=2, color=:green, ls=:dashdotdot
+	)
+end
+
+# ╔═╡ 3ca0b360-cab5-445b-89c9-7c83b29f6c6f
+md"""
+### Least Square Method
+"""
+
+# ╔═╡ db90b855-83e7-4c0c-83d1-da8f18e708a1
+begin
+	function least_square(x, y)
+		degree = 3
+		n = length(x)
+		X = Array{Float64}(undef, n, degree+1)
+		
+		for i in 1:n
+			for j in 0:degree
+				X[i, j+1] = x[i]^j
+			end
+		end
+
+		Xt = transpose(X)
+		XtX = Xt * X
+		Xty = Xt * y
+
+		XtX_inv = inv(XtX)
+		result = XtX_inv * Xty
+
+		println("Coefficients: ", result)
+
+		return x_val -> sum(result[j+1] * x_val^j for j in 0:degree)
+	end
+
+	ls_value = least_square(x, y)
+	println("f(1.5) = ", ls_value(1.5))
+
+	x_least_sq = -1.5:0.01:3.5
+	y_least_sq = ls_value.(x_least_sq)
+	p5 = plot(
+		x_least_sq, y_least_sq, label="Least Square",
+		lw=2, color=:violet, ls=:solid
+	)
+end
+
+# ╔═╡ 42727f41-5c33-4bf2-9351-0f4a1f193a9c
+
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -1235,5 +1334,10 @@ version = "1.9.2+0"
 # ╠═93192e65-3b62-41d8-9bf5-94ac1a4f84ce
 # ╟─38ccfa36-aee0-4e3e-8b84-7d3a0ec42698
 # ╠═58572904-8c9a-4537-9ee5-5356ff8a74d3
+# ╟─736a9385-aeeb-454d-9ebf-8aea5f9f94a1
+# ╠═1f25a63d-bad2-4a14-b519-dd6945659aa1
+# ╠═3ca0b360-cab5-445b-89c9-7c83b29f6c6f
+# ╠═db90b855-83e7-4c0c-83d1-da8f18e708a1
+# ╠═42727f41-5c33-4bf2-9351-0f4a1f193a9c
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
