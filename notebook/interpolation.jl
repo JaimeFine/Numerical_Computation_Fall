@@ -57,7 +57,7 @@ An example with values
 | f(x) | -4 | -1 | 0 | 3 |
 | x    | -1 | 0  | 2 | 3 |
 
-Find f(x) where x = 1.5.
+Find f(x) where x = 1.5. Then plot the graph!
 
 ### LaGrange Interpolation
 """
@@ -1330,7 +1330,7 @@ version = "1.9.2+0"
 """
 
 # ╔═╡ Cell order:
-# ╟─84456c50-dbd3-11f0-bcea-b987cc31182e
+# ╠═84456c50-dbd3-11f0-bcea-b987cc31182e
 # ╠═93192e65-3b62-41d8-9bf5-94ac1a4f84ce
 # ╟─38ccfa36-aee0-4e3e-8b84-7d3a0ec42698
 # ╠═58572904-8c9a-4537-9ee5-5356ff8a74d3
