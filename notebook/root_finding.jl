@@ -308,22 +308,6 @@ begin
 	newton_damped(f, df, 2)
 end
 
-# ╔═╡ 00000000-0000-0000-0000-000000000001
-PLUTO_PROJECT_TOML_CONTENTS = """
-[deps]
-"""
-
-# ╔═╡ 00000000-0000-0000-0000-000000000002
-PLUTO_MANIFEST_TOML_CONTENTS = """
-# This file is machine-generated - editing it directly is not advised
-
-julia_version = "1.12.2"
-manifest_format = "2.0"
-project_hash = "71853c6197a6a7f222db0f1978c7cb232b87c5ee"
-
-[deps]
-"""
-
 # ╔═╡ Cell order:
 # ╟─bd275b60-d803-11f0-839e-95ab67e9dace
 # ╠═557ba160-8835-4c39-8af8-35c789c066e0
@@ -341,5 +325,3 @@ project_hash = "71853c6197a6a7f222db0f1978c7cb232b87c5ee"
 # ╠═ed749e0d-b474-41f8-8802-e59154840712
 # ╟─f2f8ebc6-6975-48a6-a515-4cbb42226964
 # ╠═f5810624-ec67-47ba-9027-39ca6017e5a6
-# ╟─00000000-0000-0000-0000-000000000001
-# ╟─00000000-0000-0000-0000-000000000002
